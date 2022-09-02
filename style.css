@@ -159,6 +159,14 @@
   margin-bottom: 0.5vh;
 }
 
+.resultItemTitle {
+  height: 20%;
+}
+
+.resultItemYear {
+  height: 10%;
+}
+
 .resultImage img {
   margin-top: 1vh;
   width: 100%;

@@ -81,7 +81,7 @@ function displayResults() {
     const year = result.description.split(" ")[0]
     searchResultsGrid.innerHTML =
       searchResultsGrid.innerHTML +
-      `<div class="searchResultsItem"><div>${result.title}</div><div>${year}</div><div class="resultImage" data-movieID=${result.id}><img src=${result.image}></div></div>`;
+      `<div class="searchResultsItem"><div class="resultItemTitle">${result.title}</div class="resultItemYear"><div>${year}</div><div class="resultImage" data-movieID=${result.id}><img src=${result.image}></div></div>`;
   });
 }
 
