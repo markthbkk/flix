@@ -1,0 +1,77 @@
+{
+  "searchType": "Title",
+  "expression": "snatch",
+  "results": [
+    {
+      "id": "tt0208092",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTA2NDYxOGYtYjU1Mi00Y2QzLTgxMTQtMWI1MGI0ZGQ5MmU4XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Snatch",
+      "description": "(2000)"
+    },
+    {
+      "id": "tt5992164",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BMzEyMTc4NzEyMl5BMl5BanBnXkFtZTgwMzA2OTYzNjM@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Snatch",
+      "description": "(2017) (TV Series)"
+    },
+    {
+      "id": "tt0126559",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BM2VhZDA4YjEtNDg5ZC00YTQ0LTk5MWUtMGY2YzYzODg3Mjc2XkEyXkFqcGdeQXVyMjkyMDI4NTQ@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Snatch",
+      "description": "(1976)"
+    },
+    {
+      "id": "tt2334871",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BZTI5NWY1YTQtODYxMi00M2VmLTgzNDQtMGM3NWU5YjViNDE5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Snatched",
+      "description": "(2017)"
+    },
+    {
+      "id": "tt10009030",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjJmOTdhOTMtNTM2Ny00MTNlLWI3ZDUtZDA1YTg0YWNmMDU4XkEyXkFqcGdeQXVyNDMzNDc4Mg@@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Snatchers",
+      "description": "(2019)"
+    },
+    {
+      "id": "tt0968311",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjU1MjA2NzMzM15BMl5BanBnXkFtZTcwNTUzNTA2Mw@@._V1_Ratio1.0000_AL_.jpg",
+      "title": "Taken in Broad Daylight",
+      "description": "(2009) (TV Movie) aka \"Snatched\""
+    },
+    {
+      "id": "tt7130262",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BYWZiN2E3YTYtZWViOS00NzMyLThiNDctZjU3OTJmNTRjMTcyXkEyXkFqcGdeQXVyNjU0NTI0Nw@@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Evil Doctor",
+      "description": "(2018) (TV Movie) aka \"Snatched\""
+    },
+    {
+      "id": "tt0125837",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTMzNzkyMTgzMF5BMl5BanBnXkFtZTcwNzU2ODMzMQ@@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Little Girl... Big Tease",
+      "description": "(1976) aka \"Snatched\""
+    },
+    {
+      "id": "tt1245534",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTQyMDUyODkxMl5BMl5BanBnXkFtZTcwMjU4NDExNQ@@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Snatched",
+      "description": "(2011)"
+    },
+    {
+      "id": "tt0106452",
+      "resultType": "Title",
+      "image": "https://m.media-amazon.com/images/M/MV5BYjE3NzIxMzctNzQ1MS00OGQ0LTg5YjAtM2ViODkyYmEyMjllXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_Ratio0.7273_AL_.jpg",
+      "title": "Body Snatchers",
+      "description": "(1993)"
+    }
+  ],
+  "errorMessage": ""
+}
