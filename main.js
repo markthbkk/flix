@@ -169,6 +169,12 @@ function addLinksRequestFetch() {
 
       recentViewsArray.push(arrayItem)
 
+      if (recentViewsArray.length > 8) {do {
+        recentViewsArray.shift();
+      } while (recentViewsArray.length > 6);}
+
+      
+
       const recentViewsObj = JSON.stringify(recentViewsArray)
 
       localStorage.setItem("recentViews", recentViewsObj);
