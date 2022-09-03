@@ -171,7 +171,7 @@ function addLinksRequestFetch() {
 
       if (recentViewsArray.length > 8) {do {
         recentViewsArray.shift();
-      } while (recentViewsArray.length > 6);}
+      } while (recentViewsArray.length > 8);}
 
       
 
