@@ -7,9 +7,11 @@ let starsArray = new Array(0);
 let starsNamesInnerHTML = "";
 let searchResults = new Array(0);
 
+
 const queryFrame = document.getElementById("queryFrame");
 const searchBox = document.getElementById("searchBox");
 const searchButton = document.getElementById("searchButton");
+const recentViewsUL = document.getElementById("recentViewsUL");
 const searchResultsFrame = document.getElementById("searchResultsFrame");
 const searchResultsGrid = document.getElementById("searchResultsGrid");
 const movieData1 = document.getElementById("movieData1");
@@ -23,6 +25,8 @@ const directorNames = document.getElementById("directorNames");
 const starsDiv = document.getElementById("stars");
 const starsNames = document.getElementById("starsNames");
 const plotDiv = document.getElementById("plot");
+
+let recentViewsArray = new Array;
 
 function hideSection(frame) {
   let children = Array.from(frame.children);
@@ -45,6 +49,55 @@ hideSection(movieData1);
 hideSection(movieData2);
 
 searchButton.addEventListener("click", submitSearch);
+
+if (localStorage.getItem("recentViews")) {
+  const recentViewsString = localStorage.getItem("recentViews");
+  recentViewsArray = JSON.parse(recentViewsString);
+}
+
+else
+{
+ 
+  recentViewsArray = new Array(0);
+
+  }
+
+console.log(`RECENT VIEWS: ${recentViewsArray}`);
+
+recentViewsArray.forEach(function (viewItem) {
+  let url = viewItem.split("***")[0];
+  let title = viewItem.split("***")[1];
+ 
+  console.log(`TITLE: ${title}`)
+  console.log(`URL: ${url}`)
+
+  recentViewsUL.innerHTML += `<li class="recentViewsLi" data-url=${url}>${title}</li>`;
+
+})
+
+const recentViewsLi = document.getElementsByClassName("recentViewsLi");
+
+let recentViewsLiArray = Array.from(recentViewsLi);
+
+recentViewsLiArray.forEach(function (el) {
+
+  el.addEventListener('click',function (el) {
+
+    console.log(`LI: ${el.target}`)
+
+    let url = el.target.dataset.url
+
+    hideSection(queryFrame);
+    showSection(movieData1);
+    showSection(movieData2);
+
+    getMovie(url)
+
+  })
+
+
+})
+
 
 async function submitSearch() {
   const queryString = searchBox.firstChild.value;
@@ -73,7 +126,7 @@ async function submitSearch() {
 
   displayResults();
 
-  addLinksRequestFetch();
+  // addLinksRequestFetch();
 }
 
 function displayResults() {
@@ -83,6 +136,8 @@ function displayResults() {
       searchResultsGrid.innerHTML +
       `<div class="searchResultsItem"><div class="resultItemTitle">${result.title}</div><div class="resultItemYear">${year}</div><div class="resultImage" data-movieID=${result.id}><img src=${result.image}></div></div>`;
   });
+
+  addLinksRequestFetch();
 }
 
 function addLinksRequestFetch() {
@@ -91,6 +146,9 @@ function addLinksRequestFetch() {
 
   resultImagesArray.forEach(function (element) {
     element.addEventListener("click", function (el) {
+
+      console.log(`RECENT VIEWS: ${recentViewsArray}`);
+
       console.log(el);
 
       const movieID = el.target.closest("div").dataset.movieid;
@@ -99,7 +157,28 @@ function addLinksRequestFetch() {
 
       const url = baseUrl.concat(movieID);
 
+      const title = el.target.closest("div").previousSibling.previousSibling.innerText
+        
       console.log(url);
+
+      console.log(title)
+
+      let arrayItem = url.concat("***").concat(title)
+
+      console.log(arrayItem)
+
+      recentViewsArray.push(arrayItem)
+
+      const recentViewsObj = JSON.stringify(recentViewsArray)
+
+      localStorage.setItem("recentViews", recentViewsObj);
+
+      
+      
+      hideSection(searchResultsFrame);
+      showSection(movieData1);
+      showSection(movieData2);
+      hideSection(queryFrame);
 
       getMovie(url);
     });
