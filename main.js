@@ -12,6 +12,7 @@ const queryFrame = document.getElementById("queryFrame");
 const searchBox = document.getElementById("searchBox");
 const searchButton = document.getElementById("searchButton");
 const recentViewsUL = document.getElementById("recentViewsUL");
+const recentViews = document.getElementById("recentViews");
 const clearHistory = document.getElementById("clearHistory");
 const searchResultsFrame = document.getElementById("searchResultsFrame");
 const searchResultsGrid = document.getElementById("searchResultsGrid");
@@ -69,7 +70,8 @@ console.log(`RECENT VIEWS: ${recentViewsArray}`);
 
 function showClearHistoryButton() {
   if (recentViewsArray.length > 0) {
-      clearHistory.classList.remove("hidden");
+    clearHistory.classList.remove("hidden");
+    recentViews.classList.remove("hidden");
   }
 
 }
@@ -77,6 +79,7 @@ function showClearHistoryButton() {
 function hideClearHistoryButton() {
   if (recentViewsArray.length === 0) {
     clearHistory.classList.add("hidden");
+    recentViews.classList.add("hidden");
   }
 }
 
