@@ -12,6 +12,7 @@ const queryFrame = document.getElementById("queryFrame");
 const searchBox = document.getElementById("searchBox");
 const searchButton = document.getElementById("searchButton");
 const recentViewsUL = document.getElementById("recentViewsUL");
+const clearHistory = document.getElementById("clearHistory");
 const searchResultsFrame = document.getElementById("searchResultsFrame");
 const searchResultsGrid = document.getElementById("searchResultsGrid");
 const movieData1 = document.getElementById("movieData1");
@@ -50,10 +51,12 @@ hideSection(movieData2);
 
 searchButton.addEventListener("click", submitSearch);
 
+clearHistory.addEventListener("click", clearHistoryList);
+
 if (localStorage.getItem("recentViews")) {
   const recentViewsString = localStorage.getItem("recentViews");
   recentViewsArray = JSON.parse(recentViewsString);
-}
+  }
 
 else
 {
@@ -63,6 +66,23 @@ else
   }
 
 console.log(`RECENT VIEWS: ${recentViewsArray}`);
+
+function showClearHistoryButton() {
+  if (recentViewsArray.length > 0) {
+      clearHistory.classList.remove("hidden");
+  }
+
+}
+
+function hideClearHistoryButton() {
+  if (recentViewsArray.length === 0) {
+    clearHistory.classList.add("hidden");
+  }
+}
+
+
+
+showClearHistoryButton();
 
 recentViewsArray.forEach(function (viewItem) {
   let url = viewItem.split("***")[0];
@@ -97,6 +117,20 @@ recentViewsLiArray.forEach(function (el) {
 
 
 })
+
+function clearHistoryList () {
+
+  recentViewsArray = new Array(0);
+
+  const recentViewsObj = JSON.stringify(recentViewsArray);
+
+  localStorage.setItem("recentViews", recentViewsObj);
+
+  recentViewsUL.innerHTML = ""
+
+  hideClearHistoryButton();
+
+}
 
 
 async function submitSearch() {
@@ -169,11 +203,11 @@ function addLinksRequestFetch() {
 
       recentViewsArray.push(arrayItem)
 
+      showClearHistoryButton();
+
       if (recentViewsArray.length > 8) {do {
         recentViewsArray.shift();
       } while (recentViewsArray.length > 8);}
-
-      
 
       const recentViewsObj = JSON.stringify(recentViewsArray)
 
