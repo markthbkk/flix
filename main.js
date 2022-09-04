@@ -10,6 +10,7 @@ let searchResults = new Array(0);
 
 const queryFrame = document.getElementById("queryFrame");
 const searchBox = document.getElementById("searchBox");
+const searchBoxInput = document.getElementById("searchBoxInput");
 const searchButton = document.getElementById("searchButton");
 const recentViewsUL = document.getElementById("recentViewsUL");
 const recentViews = document.getElementById("recentViews");
@@ -49,6 +50,15 @@ function showSection(frame) {
 hideSection(searchResultsFrame);
 hideSection(movieData1);
 hideSection(movieData2);
+
+searchBoxInput.addEventListener("keyup", function (event) {
+event.preventDefault();
+  if (event.key === "Enter") {
+  
+  submitSearch();
+}
+
+})
 
 searchButton.addEventListener("click", submitSearch);
 
@@ -135,12 +145,12 @@ function clearHistoryList () {
 
 }
 
-
 async function submitSearch() {
   const queryString = searchBox.firstChild.value;
   const baseUrl = "https://imdb-api.com/en/API/SearchMovie/k_khga61np/";
   const url = baseUrl.concat(queryString);
-
+  
+  console.log(url);
   await fetch(url)
     .then((res) => res.json())
     .then((data) => {
