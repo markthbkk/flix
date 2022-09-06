@@ -322,6 +322,8 @@ async function getDirector(id) {
       // console.log(data.summary);
       // console.log(data.knownFor);
 
+      let directorKnownForArray = new Array(0);
+
       const directorName = data.name;
       const directorImage = data.image;
       const directorSummary = data.summary;
@@ -335,9 +337,13 @@ async function getDirector(id) {
       // console.log(directorImage)
       // console.log(directorSummary)
 
-      let directorKnownForArray = [...new Set(directorKnownFor)];
+      directorKnownForArray = [...new Set(directorKnownFor)];
+
+      directorSearchResultsGrid.innerHTML = ""
 
       directorKnownForArray.forEach((directorKF) => {
+
+        console.log(`DIR MOVIES: ${directorKF.title}`)
         directorSearchResultsGrid.innerHTML =
           directorSearchResultsGrid.innerHTML +
           `<div class="directorMoviesItem" data-id=${directorKF.id}><div class="directorMoviesItemTitle">${directorKF.title}</div><div class="directorMoviesItemYear">${directorKF.year}</div><div class="directorMoviesImage" data-id=${directorKF.id}><img src=${directorKF.image}></div></div>`;
