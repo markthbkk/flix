@@ -335,6 +335,8 @@ async function getDirector(id) {
       // console.log(directorImage)
       // console.log(directorSummary)
 
+      directorKnownFor = [...new Set(directorKnownFor)];
+
       directorKnownFor.forEach((directorKF) => {
         directorSearchResultsGrid.innerHTML =
           directorSearchResultsGrid.innerHTML +
