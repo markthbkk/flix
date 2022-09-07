@@ -13,6 +13,7 @@
   padding-bottom: 10vh;
   min-height: 100vh;
   background-color: black;
+  position: relative;
 }
 
 #banner {
@@ -21,6 +22,7 @@
   justify-content: space-around;
   width: 100%;
   height: min(20vw, 150px);
+  z-index: 0;
 }
 
 #home {
@@ -62,7 +64,7 @@
 }
 
 #queryFrame {
-  margin: 2vh auto;
+  margin: 0 auto;
   width: min(85vw, 800px);
   display: flex;
   flex-wrap: wrap;
@@ -349,7 +351,7 @@
 
 #directorData1,
 #actorData1 {
-  margin: 0 auto;
+  margin-inline: auto;
   width: min(85vw, 800px);
   display: flex;
   flex-wrap: wrap;
@@ -376,7 +378,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 2.5vh;
+  /* margin-top: .5vh; */
+  padding-top: 2.5vh;
   width: min(100vw, 800px);
 }
 
@@ -416,7 +419,8 @@
 
 #directorSearchResultsGrid,
 #actorSearchResultsGrid {
-  margin: 2vh auto;
+  margin-inline: auto;
+  padding-top: 2vh;
   width: min(100vw, 1000px);
   display: flex;
   flex-wrap: wrap;
@@ -478,6 +482,12 @@
 
 .hidden {
   display: none;
+  /* padding: 0;
   margin-top: 0;
   margin-bottom: 0;
+  overflow: hidden;
+  z-index: -1; */
+  position: relative;
+  left: 0;
+  top: 0;
 }
