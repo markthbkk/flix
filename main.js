@@ -36,10 +36,20 @@ const directorMovies = document.getElementById("directorMovies");
 const directorSearchResultsGrid = document.getElementById(
   "directorSearchResultsGrid"
 );
+const actorData1 = document.getElementById("actorData1");
+const actorNameDiv = document.getElementById("actorName");
+const actorImageDiv = document.getElementById("actorImageDiv");
+const actorImageDivImg = document.getElementById("actorImage");
+const actorSummaryDiv = document.getElementById("actorSummary");
+const actorMovies = document.getElementById("actorMovies");
+const actorSearchResultsGrid = document.getElementById(
+  "actorSearchResultsGrid"
+);
 
 let recentViewsArray = new Array();
 
 function hideSection(frame) {
+  frame.classList.add("hidden");
   let children = Array.from(frame.children);
   children.forEach((child) => {
     child.classList.add("hidden");
@@ -48,6 +58,7 @@ function hideSection(frame) {
 }
 
 function showSection(frame) {
+  frame.classList.remove("hidden");
   let children = Array.from(frame.children);
   children.forEach((child) => {
     child.classList.remove("hidden");
@@ -59,6 +70,7 @@ hideSection(searchResultsFrame);
 hideSection(movieData1);
 hideSection(movieData2);
 hideSection(directorData1);
+hideSection(actorData1)
 
 searchBoxInput.addEventListener("keyup", function (event) {
   event.preventDefault();
@@ -250,7 +262,8 @@ async function getMovie(movieUrl) {
       const moviePosterImage = data.image;
       const movieYear = data.year;
       const movieDirectors = data.directorList;
-      const movieStarsString = data.stars;
+      // const movieStarsString = data.stars;
+      const movieStarsArray = data.starList
       const moviePlot = data.plot;
 
       movieTitleDiv.innerText = movieTitle;
@@ -281,7 +294,7 @@ async function getMovie(movieUrl) {
         });
       });
 
-      const movieStarsArray = movieStarsString.split(", ");
+      // const movieStarsArray = movieStarsString.split(", ");
 
       console.log(movieStarsArray);
 
@@ -290,10 +303,20 @@ async function getMovie(movieUrl) {
       starsNamesInnerHTML = "";
       starsArray.forEach((element) => {
         starsNamesInnerHTML = starsNamesInnerHTML.concat(
-          `<div>${element}</div>`
+          `<div class="movieActorsDiv" data-actorid=${element.id}>${element.name}</div>`
         );
       });
       starsNames.innerHTML = starsNamesInnerHTML;
+
+      const movieActorsDivs = document.getElementsByClassName("movieActorsDiv");
+
+      let movieActorsDivsArray = Array.from(movieActorsDivs);
+
+      movieActorsDivsArray.forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          getActor(e.target.dataset.actorid);
+        });
+      });
 
       plotDiv.innerHTML = `<P>${moviePlot}</P>`;
     });
@@ -339,11 +362,10 @@ async function getDirector(id) {
 
       directorKnownForArray = [...new Set(directorKnownFor)];
 
-      directorSearchResultsGrid.innerHTML = ""
+      directorSearchResultsGrid.innerHTML = "";
 
       directorKnownForArray.forEach((directorKF) => {
-
-        console.log(`DIR MOVIES: ${directorKF.title}`)
+        console.log(`DIR MOVIES: ${directorKF.title}`);
         directorSearchResultsGrid.innerHTML =
           directorSearchResultsGrid.innerHTML +
           `<div class="directorMoviesItem" data-id=${directorKF.id}><div class="directorMoviesItemTitle">${directorKF.title}</div><div class="directorMoviesItemYear">${directorKF.year}</div><div class="directorMoviesImage" data-id=${directorKF.id}><img src=${directorKF.image}></div></div>`;
@@ -413,4 +435,116 @@ async function getDirector(id) {
   hideSection(movieData1);
   hideSection(movieData2);
   showSection(directorData1);
+}
+
+async function getActor(id) {
+  const baseUrl = "https://imdb-api.com/en/API/Name/k_khga61np/";
+
+  console.log(`ACTOR: ${id}`);
+
+  const url = baseUrl.concat(id);
+
+  await fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data.name);
+      // console.log(data.image);
+      // console.log(data.summary);
+      // console.log(data.knownFor);
+
+      let actorKnownForArray = new Array(0);
+
+      const actorName = data.name;
+      const actorImage = data.image;
+      const actorSummary = data.summary;
+      const actorKnownFor = data.knownFor;
+
+      actorNameDiv.innerText = actorName;
+      actorSummaryDiv.innerText = actorSummary;
+      actorImageDivImg.src = actorImage;
+
+      // console.log(directorName)
+      // console.log(directorImage)
+      // console.log(directorSummary)
+
+      actorKnownForArray = [...new Set(actorKnownFor)];
+
+      actorSearchResultsGrid.innerHTML = "";
+
+      actorKnownForArray.forEach((actorKF) => {
+        console.log(`DIR MOVIES: ${actorKF.title}`);
+        actorSearchResultsGrid.innerHTML =
+          actorSearchResultsGrid.innerHTML +
+          `<div class="actorMoviesItem" data-id=${actorKF.id}><div class="actorMoviesItemTitle">${actorKF.title}</div><div class="actorMoviesItemYear">${actorKF.year}</div><div class="actorMoviesImage" data-id=${actorKF.id}><img src=${actorKF.image}></div></div>`;
+
+        addLinksFromActorRequestFetch();
+
+        hideSection(movieData1);
+        hideSection(movieData2);
+        hideSection(directorData1);
+        showSection(actorData1);
+        
+      });
+
+      function addLinksFromActorRequestFetch() {
+        const actorMoviesImages = document.getElementsByClassName(
+          "actorMoviesImage"
+        );
+        const actorMoviesImagesArray = Array.from(actorMoviesImages);
+
+        actorMoviesImagesArray.forEach(function (element) {
+          element.addEventListener("click", function (el) {
+            console.log(el);
+
+            const movieID = el.target.closest("div").dataset.id;
+
+            const baseUrl = "https://imdb-api.com/en/API/Title/k_khga61np/";
+
+            const url = baseUrl.concat(movieID);
+
+            const title =
+              el.target.closest("div").previousSibling.previousSibling
+                .innerText;
+
+            console.log(url);
+
+            console.log(title);
+
+            let arrayItem = url.concat("***").concat(title);
+
+            console.log(arrayItem);
+
+            recentViewsArray.push(arrayItem);
+
+            showClearHistoryButton();
+
+            if (recentViewsArray.length > 8) {
+              do {
+                recentViewsArray.shift();
+              } while (recentViewsArray.length > 8);
+            }
+
+            const recentViewsObj = JSON.stringify(recentViewsArray);
+
+            localStorage.setItem("recentViews", recentViewsObj);
+
+            hideSection(searchResultsFrame);
+            hideSection(queryFrame);
+            hideSection(directorData1);
+
+            getMovie(url);
+            
+            hideSection(actorData1);
+            showSection(movieData1);
+            showSection(movieData2);
+            
+          });
+        });
+      }
+    });
+
+  // hideSection(movieData1);
+  // hideSection(movieData2);
+  // hideSection(directorData1);
+  // showSection(actorData1);
 }

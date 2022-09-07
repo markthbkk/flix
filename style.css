@@ -21,7 +21,6 @@
   justify-content: space-around;
   width: 100%;
   height: min(20vw, 150px);
- 
 }
 
 #home {
@@ -45,10 +44,8 @@
   height: min(15vw, 120px);
   object-fit: cover;
   /* border: 2px solid white; */
-  box-shadow: rgba(246, 247, 248, 0.25) .3vw .7vh 24px;
+  box-shadow: rgba(246, 247, 248, 0.25) 0.3vw 0.7vh 24px;
 }
-
-
 
 #title {
   width: 55%;
@@ -70,7 +67,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  }
+}
 
 #searchIMDB {
   margin-top: 5vh;
@@ -126,21 +123,22 @@
 }
 
 #recentViews span {
-color: white;
-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   font-size: min(2.5vw, 1.6rem);
 }
 
-#recentViewsUL {list-style-type: none;}
-
+#recentViewsUL {
+  list-style-type: none;
+}
 
 #recentViewsUL li {
   width: 85%;
   /* border: 2px solid rgb(134, 30, 11); */
   border-radius: 0 1rem 1rem 0;
   padding-left: 6%;
-  background-color:rgb(165, 150, 14);
+  background-color: rgb(165, 150, 14);
   color: black;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
@@ -156,10 +154,10 @@ font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #ClearHistoryOuter {
-width: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end
+  justify-content: flex-end;
 }
 
 #clearHistory {
@@ -169,7 +167,7 @@ width: 100%;
   border: 1px solid white;
 
   text-align: center;
-  background-color:black;
+  background-color: black;
   color: rgb(165, 150, 14);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 300;
@@ -178,7 +176,6 @@ width: 100%;
   cursor: pointer;
   height: 3vh;
   line-height: 2.5vh;
-
 }
 
 #searchResults {
@@ -231,7 +228,7 @@ width: 100%;
 }
 
 .resultImage {
-/* border: 1px solid white; */
+  /* border: 1px solid white; */
   height: 80%;
   /* border-radius: 20px; */
   overflow: hidden;
@@ -301,8 +298,8 @@ width: 100%;
   font-size: min(4vw, 1.5rem);
 }
 
-#director {
-
+#director,
+.movieActorsDiv {
   cursor: pointer;
 }
 
@@ -350,8 +347,8 @@ width: 100%;
   font-size: min(4vw, 1.2rem);
 }
 
-
-#directorData1 {
+#directorData1,
+#actorData1 {
   margin: auto;
   width: min(85vw, 800px);
   display: flex;
@@ -359,7 +356,8 @@ width: 100%;
   justify-content: center;
 }
 
-#directorName {
+#directorName,
+#actorName {
   width: 80%;
   /* line-height: min(8vh, 120px); */
   text-align: left;
@@ -373,7 +371,8 @@ width: 100%;
   /* height: min(8vh, 120px); */
 }
 
-#directorImageDiv {
+#directorImageDiv,
+#actorImageDiv {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -381,12 +380,14 @@ width: 100%;
   width: min(100vw, 800px);
 }
 
-#directorImage {
+#directorImage,
+#actorImage {
   width: 80%;
   object-fit: contain;
 }
 
-#directorSummary{
+#directorSummary,
+#actorSummary {
   width: 80%;
   margin-top: 3.5vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -394,15 +395,15 @@ width: 100%;
   font-size: min(5vw, 1.5rem);
   font-style: italic;
   color: white;
-
 }
 
-#directorMovies {
-
+#directorMovies,
+#actorMovies {
   width: 80%;
 }
 
-#directorMovies p {
+#directorMovies p,
+#actorMovies p {
   margin-top: 3.5vh;
   width: 80%;
   color: white;
@@ -413,7 +414,8 @@ width: 100%;
   text-align: left;
 }
 
-#directorSearchResultsGrid {
+#directorSearchResultsGrid,
+#actorSearchResultsGrid {
   margin: 2vh auto;
   width: min(100vw, 1000px);
   display: flex;
@@ -425,7 +427,8 @@ width: 100%;
   font-size: min(2vw, 1rem);
 }
 
-#directorSearchResultsGrid > div {
+#directorSearchResultsGrid > div,
+#actorSearchResultsGrid > div {
   width: 28%;
   height: 30vh;
   border: 1px solid white;
@@ -434,32 +437,38 @@ width: 100%;
   padding: 1vh;
 }
 
-.directorMoviesItem {
+.directorMoviesItem,
+.actorMoviesItem {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.directorMoviesItem div {
+.directorMoviesItem div,
+.actorMoviesItem div {
   margin-bottom: 0.5vh;
 }
 
-.directorMoviesItemTitle {
+.directorMoviesItemTitle,
+.actorMoviesItemTitle {
   height: 12%;
 }
 
-.directorMoviesItemYear {
+.directorMoviesItemYear,
+.actorMoviesItemYear {
   height: 10%;
 }
 
-.directorMoviesImage {
-/* border: 1px solid white; */
+.directorMoviesImage,
+.actorMoviesImage {
+  /* border: 1px solid white; */
   height: 90%;
   /* border-radius: 20px; */
   overflow: hidden;
 }
 
-.directorMoviesImage img {
+.directorMoviesImage img,
+.actorMoviesImage img {
   /* margin-top: 1vh; */
   width: 100%;
   height: 100%;
@@ -469,4 +478,5 @@ width: 100%;
 
 .hidden {
   display: none;
+  margin: 0;
 }
