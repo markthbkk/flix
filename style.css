@@ -349,7 +349,7 @@
 
 #directorData1,
 #actorData1 {
-  margin: auto;
+  margin: 0 auto;
   width: min(85vw, 800px);
   display: flex;
   flex-wrap: wrap;
@@ -478,5 +478,6 @@
 
 .hidden {
   display: none;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }

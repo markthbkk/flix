@@ -70,7 +70,7 @@ hideSection(searchResultsFrame);
 hideSection(movieData1);
 hideSection(movieData2);
 hideSection(directorData1);
-hideSection(actorData1)
+hideSection(actorData1);
 
 searchBoxInput.addEventListener("keyup", function (event) {
   event.preventDefault();
@@ -263,7 +263,7 @@ async function getMovie(movieUrl) {
       const movieYear = data.year;
       const movieDirectors = data.directorList;
       // const movieStarsString = data.stars;
-      const movieStarsArray = data.starList
+      const movieStarsArray = data.starList;
       const moviePlot = data.plot;
 
       movieTitleDiv.innerText = movieTitle;
@@ -326,6 +326,7 @@ async function getMovie(movieUrl) {
   hideSection(searchResultsFrame);
   showSection(movieData1);
   showSection(movieData2);
+  window.scrollTo(0, 0);
 }
 
 getMovie();
@@ -427,6 +428,7 @@ async function getDirector(id) {
 
             showSection(movieData1);
             showSection(movieData2);
+            
           });
         });
       }
@@ -435,6 +437,7 @@ async function getDirector(id) {
   hideSection(movieData1);
   hideSection(movieData2);
   showSection(directorData1);
+  window.scrollTo(0, 0);
 }
 
 async function getActor(id) {
@@ -483,13 +486,12 @@ async function getActor(id) {
         hideSection(movieData2);
         hideSection(directorData1);
         showSection(actorData1);
-        
+        window.scrollTo(0, 0);
       });
 
       function addLinksFromActorRequestFetch() {
-        const actorMoviesImages = document.getElementsByClassName(
-          "actorMoviesImage"
-        );
+        const actorMoviesImages =
+          document.getElementsByClassName("actorMoviesImage");
         const actorMoviesImagesArray = Array.from(actorMoviesImages);
 
         actorMoviesImagesArray.forEach(function (element) {
@@ -533,11 +535,11 @@ async function getActor(id) {
             hideSection(directorData1);
 
             getMovie(url);
-            
+
             hideSection(actorData1);
             showSection(movieData1);
             showSection(movieData2);
-            
+            window.scrollTo(0, 0);
           });
         });
       }
