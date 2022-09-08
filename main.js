@@ -16,6 +16,7 @@ const recentViews = document.getElementById("recentViews");
 const clearHistory = document.getElementById("clearHistory");
 const searchResultsFrame = document.getElementById("searchResultsFrame");
 const searchResultsGrid = document.getElementById("searchResultsGrid");
+const movieDataFrame = document.getElementById("movieDataFrame");
 const movieData1 = document.getElementById("movieData1");
 const movieTitleDiv = document.getElementById("movieTitle");
 const posterImage = document.getElementById("posterImage");
@@ -27,6 +28,7 @@ const directorNames = document.getElementById("directorNames");
 const starsDiv = document.getElementById("stars");
 const starsNames = document.getElementById("starsNames");
 const plotDiv = document.getElementById("plot");
+const directorDataFrame = document.getElementById("directorDataFrame");
 const directorData1 = document.getElementById("directorData1");
 const directorNameDiv = document.getElementById("directorName");
 const directorImageDiv = document.getElementById("directorImageDiv");
@@ -67,6 +69,7 @@ function showSection(frame) {
 }
 
 hideSection(searchResultsFrame);
+hideSection(movieDataFrame);
 hideSection(movieData1);
 hideSection(movieData2);
 hideSection(directorData1);
@@ -133,6 +136,7 @@ recentViewsLiArray.forEach(function (el) {
 
     hideSection(searchResultsFrame);
     hideSection(queryFrame);
+    showSection(movieDataFrame);
     showSection(movieData1);
     showSection(movieData2);
 
@@ -238,6 +242,7 @@ function addLinksRequestFetch() {
       localStorage.setItem("recentViews", recentViewsObj);
 
       hideSection(searchResultsFrame);
+      showSection(movieDataFrame);
       showSection(movieData1);
       showSection(movieData2);
       hideSection(queryFrame);
@@ -324,6 +329,7 @@ async function getMovie(movieUrl) {
   // plotDiv.innerHTML = `<P>${moviePlot}</P>`;
 
   hideSection(searchResultsFrame);
+  showSection(movieDataFrame);
   showSection(movieData1);
   showSection(movieData2);
   window.scrollTo(0, 0);
@@ -425,15 +431,14 @@ async function getDirector(id) {
             hideSection(directorData1);
 
             getMovie(url);
-
+            showSection(movieDataFrame);  
             showSection(movieData1);
             showSection(movieData2);
-            
           });
         });
       }
     });
-
+  hideSection(movieDataFrame);
   hideSection(movieData1);
   hideSection(movieData2);
   showSection(directorData1);
@@ -482,8 +487,10 @@ async function getActor(id) {
 
         addLinksFromActorRequestFetch();
 
+        hideSection(movieDataFrame);
         hideSection(movieData1);
         hideSection(movieData2);
+        hideSection(directorDataFrame);
         hideSection(directorData1);
         showSection(actorData1);
         window.scrollTo(0, 0);
@@ -533,10 +540,12 @@ async function getActor(id) {
             hideSection(searchResultsFrame);
             hideSection(queryFrame);
             hideSection(directorData1);
+            hideSection(directorDataFrame);
 
             getMovie(url);
 
             hideSection(actorData1);
+            showSection(movieDataFrame);
             showSection(movieData1);
             showSection(movieData2);
             window.scrollTo(0, 0);
