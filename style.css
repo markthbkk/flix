@@ -26,7 +26,6 @@
   width: 100%;
   height: min(20vw, 150px);
   z-index: 1;
-  
 }
 
 #home {
@@ -145,18 +144,17 @@
 
 #recentViewsUL li {
   width: 85%;
-  /* border: 2px solid rgb(134, 30, 11); */
   border-radius: 0 1rem 1rem 0;
   padding-left: 6%;
   background-color: rgb(165, 150, 14);
   color: black;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
+  font-family: "Supreme", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
   font-size: min(3.5vw, 1.6rem);
   margin-bottom: 2vh;
   cursor: pointer;
-  height: 3vh;
-  line-height: 3vh;
+  height: 3.3vh;
+  line-height: 3.3vh;
 }
 
 #recentViewsUL li:nth-child(1) {
@@ -180,12 +178,12 @@
   background-color: black;
   color: rgb(165, 150, 14);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 300;
-  font-size: min(3.5vw, 1.6rem);
+  font-weight: 500;
+  font-size: min(2.5vw, 1.3rem);
   margin-bottom: 2vh;
   cursor: pointer;
-  height: 3vh;
-  line-height: 2.5vh;
+  height: max(4vh, 2.3vw);
+  line-height: max(3.8vh, 2vw);
 }
 
 #searchResults {
