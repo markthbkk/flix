@@ -1,4 +1,3 @@
-
 import { getMovie } from "./main.js";
 
 let recentViewsArray = new Array();
@@ -25,12 +24,12 @@ export function buildRecentViewsArray(lSRecentViews) {
   if (lSRecentViews) {
     const recentViewsString = lSRecentViews;
     recentViewsArray = JSON.parse(recentViewsString);
-      recentViewsArray = [...new Set(recentViewsArray)];
-      console.log(recentViewsArray)
+    recentViewsArray = [...new Set(recentViewsArray)];
+    console.log(recentViewsArray);
   } else {
     recentViewsArray = new Array(0);
-    }
-    return recentViewsArray;
+  }
+  return recentViewsArray;
 }
 
 export function writeRecentViewsToHomePage(recentViewsArray) {
@@ -41,7 +40,11 @@ export function writeRecentViewsToHomePage(recentViewsArray) {
     console.log(`TITLE: ${title}`);
     console.log(`URL: ${url}`);
 
-    recentViewsUL.innerHTML += `<li class="recentViewsLi" data-url=${url}>${title}</li>`;
+    if (title.length > 36) {
+      recentViewsUL.innerHTML += `<li class="recentViewsLi recentViewsLiTall" data-url=${url}>${title}</li>`;
+    } else {
+      recentViewsUL.innerHTML += `<li class="recentViewsLi" data-url=${url}>${title}</li>`;
+    }
   });
 
   const recentViewsLi = document.getElementsByClassName("recentViewsLi");

@@ -142,7 +142,8 @@
   list-style-type: none;
 }
 
-#recentViewsUL li {
+/* #recentViewsUL li, */
+ .recentViewsLi, .recentViewsLiTall {
   width: 85%;
   border-radius: 0 1rem 1rem 0;
   padding-left: 6%;
@@ -155,7 +156,9 @@
   cursor: pointer;
   height: 3.3vh;
   line-height: 3.3vh;
+  overflow-wrap: normal;
 }
+
 
 #recentViewsUL li:nth-child(1) {
   margin-top: 2vh;
@@ -496,4 +499,21 @@
   position: relative;
   left: 0;
   top: 0;
+}
+
+@media (max-width: 801px) {
+  .recentViewsLiTall {
+    padding-top: 0.4vh;
+    padding-left: 1.5vh;
+    height: 6.6vh;
+    line-height: 2.9vh;
+  }
+}
+
+@media (min-width: 802px) {
+.recentViewsLiTall {
+
+font-size: min(3vw, 1.4rem);
+}
+
 }
